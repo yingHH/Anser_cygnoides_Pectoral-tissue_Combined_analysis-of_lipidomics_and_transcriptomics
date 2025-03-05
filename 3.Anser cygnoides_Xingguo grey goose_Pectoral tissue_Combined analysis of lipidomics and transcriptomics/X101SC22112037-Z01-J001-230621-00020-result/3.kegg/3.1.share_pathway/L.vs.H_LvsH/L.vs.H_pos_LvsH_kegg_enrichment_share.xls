@@ -1,0 +1,7 @@
+Description	Pvalue	Ratio	Count	Type	ID
+Sphingolipid metabolism	0.230769231	1	1	Meta	sphinganine
+Sphingolipid metabolism	0.328199328	0.09375	6	Tran	Anser_cygnoides_newGene_4350;evm.model.chr16.628.g;evm.model.chr19.678.g;evm.model.chr23.277.g;evm.model.chr27.570.g;evm.model.chr7.577.g
+Retinol metabolism	0.230769231	1	1	Meta	Vitamin A
+Retinol metabolism	0.974477591	0.020833333	1	Tran	evm.model.chr25.269.g
+Ferroptosis	0.423076923	0.5	1	Meta	Ubiquinone-10
+Ferroptosis	0.516848516	0.081081081	3	Tran	evm.model.chr16.138.g;evm.model.chr16.140.g;evm.model.chr17.768.g

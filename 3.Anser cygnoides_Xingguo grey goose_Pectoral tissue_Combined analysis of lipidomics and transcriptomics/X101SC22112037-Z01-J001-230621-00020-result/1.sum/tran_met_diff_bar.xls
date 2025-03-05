@@ -1,0 +1,7 @@
+Compared Samples	Type	variable	value	classname
+L.vs.H(LvsH)	Down	GeneNum	6771	GeneNum_Down
+L.vs.H(LvsH)	Up	GeneNum	6363	GeneNum_Up
+L.vs.H(LvsH)	Down	MetNum_neg	60	MetNum_neg_Down
+L.vs.H(LvsH)	Up	MetNum_neg	203	MetNum_neg_Up
+L.vs.H(LvsH)	Down	MetNum_pos	119	MetNum_pos_Down
+L.vs.H(LvsH)	Up	MetNum_pos	180	MetNum_pos_Up

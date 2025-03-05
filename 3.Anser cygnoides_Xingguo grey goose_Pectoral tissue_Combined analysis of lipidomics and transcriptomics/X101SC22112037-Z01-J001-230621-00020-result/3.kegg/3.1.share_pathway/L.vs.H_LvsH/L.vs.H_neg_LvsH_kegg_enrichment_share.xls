@@ -1,0 +1,7 @@
+Table 2. Key signaling pathways and associated DEGs and SDMs in the formation of fatty liver.		
+KEGG term	DEG	DLM
+Fatty acid metabolism-neg	ELOV5; EHHADH	Icosanoyl-CoA
+Biosynthesis of unsaturated fatty acids-neg	ELOV5	Icosanoyl-CoA
+Sphingolipid metabolism-pos	Anser_cygnoides_newGene_4350;evm.model.chr16.628.g;evm.model.chr19.678.g;cgt;SMPD4;evm.model.chr7.577.g	sphinganine
+Retinol metabolism-pos	C340	Vitamin A
+Ferroptosis-pos	evm.model.chr16.138.g;FA5V;GBRL1	Ubiquinone-10
