@@ -1,0 +1,506 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<TITLE>转录组和代谢组关联分析报告</TITLE>
+<META NAME="Author" CONTENT="zhangyu">
+<META NAME="Author" CONTENT="qiufujun">
+<META NAME="Version" CONTENT="20150320v2.1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="x-ua-compatible" content="ie=edge" />
+<link rel="stylesheet" type="text/css" href="src/css/text.css">
+<link rel="stylesheet" type="text/css" href="src/js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+<link rel="stylesheet" href="src/css/style.css" />
+<script src="src/js/jquery-1.4.2.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+	var jqueryv14 = $.noConflict(true);
+</script>
+<script src="src/js/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script src="src/js/scrollTop.js" type="text/javascript"></script>
+<script src="src/js/common.js" type="text/javascript"></script>
+<script src="src/js/jquery.albumSlider.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="src/js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+<script type="text/javascript" src="src/js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+<script type="text/javascript" src="src/js/operate.js"></script>
+<script src="src/js/layer/layer.min.js"></script>
+<script>
+layer.use('extend/layer.ext.js'); //载入layer拓展模块
+</script>
+<style media="print">
+.noprint {
+	display: none;
+}
+
+</style>
+<script type="text/javascript">
+</script>
+<script type="text/javascript">
+</script>
+<script type="text/javascript">
+    $(function(){
+        $(window).scroll(function(){
+			var initoffset_snp = $('#'+12).offset();
+			var currenttop_snp = $(window).scrollTop()+100;
+			if (currenttop_snp > initoffset_snp.top) {
+				var topScroll=$("#left")[0].scrollHeight;
+				var divheight=$("#left").height();
+				var stop=topScroll-divheight;
+				$("#left").scrollTop(stop);
+			}else{
+				$("#left").scrollTop(0);
+			}
+        })
+    })
+</script>
+
+</head>
+<body>
+<div class="noprint">
+  <div style="display: block;" id="goTopBtn"><a class="backtotop" title="回顶部"><img src="src/images/goTop.jpg" width="30" height="30" class="back-tip"/></a></div>
+</div>
+<div id="menu" class="noprint">
+	<div class="mulu">
+    <center>
+    <a href="javascript:void(0);" id="zhankai"><b></b></a><a href="javascript:void(0);" id="kaiguan" ><b>【目录】</b></a>
+    </center>
+	</div>
+<div id="left" style="display:block">
+<div class="title"><a href="#分析概述" class="shouqi" id="analyses_2">&nbsp;
+      <span>
+      一、分析概述</span>&nbsp;<img src="src/images/arrow_right.png" style="display:none; margin-top:5px" class="arrow"/></a></div>
+<span></span>
+<div class="title"><a href="javascript:void(0)" class="shouqi" id="result_3">&nbsp;
+      <span>
+      二、关联分析结果</span>&nbsp;<img src="src/images/arrow_up.png" style="display:none" class="arrow"/></a></div>
+<div class="lanmu-content" style="display:block">
+	<dl class="lanmu-list">
+		<dd class="menusecondtitle"><a href="#转录组和代谢组项目总览" id="nav_order_clean"><b>1.转录组和代谢组项目总览</b></a></dd>
+		<dd><a href="#比较对信息" id="nav_order_tophat">&nbsp;&nbsp;1.1 比较对信息</a></dd>
+		<dd><a href="#转录组和代谢组表达调控分析" id="nav_order_tophat">&nbsp;&nbsp;1.2 转录组和代谢组表达调控分析</a></dd>
+		<dd class="menusecondtitle"><a href="#差异基因与差异代谢物表达相关性分析" id="nav_order_clean"><b>2.差异基因与差异代谢物表达相关性分析</b></a></dd>
+		<dd><a href="#相关性热图分析" id="nav_order_tophat">&nbsp;&nbsp;2.1 相关性热图分析</a></dd>
+		<dd><a href="#相关性网络图分析" id="nav_order_tophat">&nbsp;&nbsp;2.2 相关性网络图分析</a></dd>
+		<dd class="menusecondtitle"><a href="#差异基因与差异代谢物通路富集分析" id="nav_order_clean"><b>3.差异基因与差异代谢物通路富集分析</b></a></dd>
+		<dd><a href="#KEGG富集分析" id="nav_order_tophat">&nbsp;&nbsp;3.1 KEGG富集分析</a></dd>
+		<dd><a href="#iPath 通路可视化分析" id="nav_order_tophat">&nbsp;&nbsp;3.2 iPath 通路可视化分析</a></dd>
+		<dd><a href="#KEGG 通量可视化分析" id="nav_order_tophat">&nbsp;&nbsp;3.3 KEGG pathview可视化分析</a></dd>
+</div>
+
+
+<div class="title"><a href="#参考文献" class="shouqi" id="ref_id">&nbsp;<span> 三、参考文献</span>&nbsp;<img src="src/images/arrow_right.png" style="display:none; margin-top:5px" class="arrow"/></a>
+</div>
+    <span></span> </div>
+</div>
+
+<div id="main">
+<div id="page">
+<br><br><br><br>
+<h1 id="pipline">转录组和代谢组关联分析的结题报告</h2>
+<br><br><br>
+    <h2 id="pipline">项目信息</h2>
+    <p class="paragraph">项目编号：X101SC22112037-Z01</p>
+    <p class="paragraph">项目名称：南昌康旭禾生物公司60个脂质组学分析技术服务（委托）合同</p>
+    <p class="paragraph">报告时间：2023-06-21</p>
+    <p class="paragraph">报告编号：X101SC22112037-Z01-J001-230621-00020</p>
+    <br>
+</div>
+<div id="page">
+<p class="head"><a href="#home" title = "返回首页"><img class="logo" align="left" src="src/images/logo.png" /></a> <a name="分析概述">北京诺禾致源生物信息科技有限公司</a><hr/></p>
+    <h2 id="pipline">一、分析概述</h2>
+    <p class="paragraph">随着多组学技术的蓬勃发展，使得由精细的分解研究转向系统的整体研究成为可能。不同组学的数据相互补充、验证，共同对基因功能进行解释，基因组学可以通过全基因组测序和功能注释来揭示生物基因的结构与功能的联系；转录组学是在整体水平上研究细胞中基因转录的情况及转录调控规律的学科；蛋白质组学可以研究生物体蛋白质组成及其变化规律，是生物体功能的直接执行者；代谢组学则是研究生物体受外界刺激或扰动后，其代谢物的变化或随时间规律变化的学科，是接近于表型的学科<SUP>[1]</SUP>。多组学数据的整合能够实现对生物系统全面的了解，当部分层面上的研究逐渐走向完善的时候，从部分到整体就是一种必然发展趋势。</p>
+    <p class="paragraph">其中，转录组学是从RNA水平研究基因表达的情况，是研究细胞功能的重要手段<SUP>[2]</SUP>；代谢组学作为其延伸，是通过小分子代谢物的变化得出的规律来揭示其参与生命活动的机制。代谢组学为转录组学提供了更加表观显著的数据支持。我们将他们进行综合研究的目的在于：</p>
+	<p class="paragraph">（1）细胞内的生命活动由基因、蛋白质、以及小分子代谢产物来共同承担，大分子的功能性变化最终会体现于代谢层面，基因表达在功能水平上的微小变化会在代谢物上得到放大，从而使检测更容易；</p>
+	<p class="paragraph">（2）许多基因的非功能性变化不会在代谢物上反映出来，从而起到了上游信息向下游传递过程中“噪音过滤”的效果；</p>
+	<p class="paragraph">（3）代谢物的种类要远小于基因的数目。</p>
+    <p class="paragraph">转录组和代谢组的比较关联研究能揭示基因表达的转录后调控状态，因此，转录组和代谢组之间的关系很可能将是未来的系统生物学研究中不可忽略的一部分，图1描述了两组学关联分析的流程。</p>
+    <p class="center"> <img  src="src/images/pipelines.png"  width="60%" /> </p>
+	<p class="name">图1. 转录组和代谢组关联分析流程图</p>
+</div>
+<div id="page">
+<p class="head"><a href="#home" title = "返回首页"><img class="logo" align="left" src="src/images/logo.png" /></a> <a name="关联分析结果">北京诺禾致源生物信息科技有限公司</a><hr/></p>
+
+<h2>二、关联分析结果</h2>
+<a name="转录组和代谢组项目总览"></a >
+	<h3 id="">1.转录组和代谢组项目总览</h3>
+	<a name="比较对信息"></a >
+	<h4 id="">1.1 比较对信息</h4>
+<p class="name">表1.1 比较对情况</p>
+<p class="center"><div id="tb"><table>
+<tr><th>代谢组（M）</th><th>转录组（T）</th></tr>
+
+<tr><td>L.vs.H</td><td>LvsH</td><tr>
+
+</table></p>
+   
+</div>
+<a name="转录组和代谢组表达调控分析"></a >
+<h4 id="">1.2 转录组和代谢组表达调控分析</h4>
+<p class="paragraph">转录组与代谢组是检测特定状态下生物个体、组织或细胞的基因和代谢物的表达水平。每个比较组差异分析的结果见下表 1.2。</p>
+<p class="name">表1.2 基因差异分析结果</p>
+<table border="1" class="dataframe table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Compared Samples</th>
+      <th>Type</th>
+      <th>GeneNum</th>
+      <th>MetNum_neg</th>
+      <th>MetNum_pos</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>L.vs.H(LvsH)</td>
+      <td>Down</td>
+      <td>6771</td>
+      <td>60</td>
+      <td>119</td>
+    </tr>
+    <tr>
+      <td>L.vs.H(LvsH)</td>
+      <td>Up</td>
+      <td>6363</td>
+      <td>203</td>
+      <td>180</td>
+    </tr>
+  </tbody>
+</table>			
+<p class="center"> <img  src="src/pictures/bar.png"  width="50%" /> </p>								
+								
+	<p class="premark">表格的详细内容如下：
+	(1) Compared Samples：比较的样品对，为前者比后者；
+	(2) Type：可定量和显著差异的类型；
+	(3) GeneNum: 显著差异的基因的数目； 
+	(4) MetNum: 显著差异的代谢物数目； </p>
+  <p class="premark">对应的结果目录：统计表格见Result/1.sum/table.xls，统计柱状图见Result/1.sum/bar.{pdf,png}</p>
+	
+</div>
+<div id="page">
+
+<p class="head"><a href="#home" title = "返回首页"><img class="logo" align="left" src="src/images/logo.png" /></a> <a name="差异基因与差异代谢物表达相关性分析">北京诺禾致源生物信息科技有限公司</a><hr/></p>
+<a name="差异基因与差异代谢物表达相关性分析"></a >
+<h3 id="">2.差异基因与差异代谢物表达相关性分析</h3>
+<a name="相关性热图分析"></a >
+<h4 id="">2.1 相关性热图分析</h4>
+<p class="paragraph">将转录组分析得到显著差异的基因与代谢组学分析得到的显著差异的代谢物基于皮尔森相关系数进行相关性分析，以度量差异基因与差异代谢物之间的关联程度。当相关系数小于 0 时，称为负相关；大于 0 时，称正相关。展示Top 50 的差异代谢物（按p value从小到大排序）和Top 50 的差异基因（按p value 从小到大排序）；若差异代谢物数目 < 50或差异基因数目 < 50，则展示所有的差异代谢物或所有的差异基因。相关性分析结果如下（高清版的图片，可见结果文件）。</p>
+
+
+<p class="center">
+  <div class="albumSlider">
+    <div class="fullview"><img src="src/pictures/L.vs.H_pos_LvsH_corrplot_heatmap.png" alt="相关性分析热图"/></div>
+    <div class="slider">
+    <div class="button movebackward" title="向上滚动"></div>
+    <div class="imglistwrap">
+    <ul class="imglist">
+        
+        <li><a id="example1" href="src/pictures/L.vs.H_pos_LvsH_corrplot_heatmap.png" ><img src="src/pictures/L.vs.H_pos_LvsH_corrplot_heatmap.png" alt="相关性分析热图"/></a></li>
+        
+        </ul>
+    </div>
+<div class="button moveforward" title="向下滚动"></div>
+</div>
+</div>
+</p>
+<p class="center">
+    <div class="albumSlider">
+      <div class="fullview"><img src="src/pictures/L.vs.H_neg_LvsH_corrplot_heatmap.png" alt="相关性分析热图"/></div>
+      <div class="slider">
+      <div class="button movebackward" title="向上滚动"></div>
+      <div class="imglistwrap">
+      <ul class="imglist">
+          
+          <li><a id="example1" href="src/pictures/L.vs.H_neg_LvsH_corrplot_heatmap.png" ><img src="src/pictures/L.vs.H_neg_LvsH_corrplot_heatmap.png" alt="相关性分析热图"/></a></li>
+          
+                          </ul>
+      </div>
+  <div class="button moveforward" title="向下滚动"></div>
+  </div>
+</div>
+</p>
+  <p class="name">图2.1 差异代谢物与差异基因表达相关性分析热图（上图框是正离子模式，下图框是负离子模式）</p>
+  <p class="premark"></p>
+
+
+<p class="premark">注：纵向代表差异代谢物，横向代表差异基因。蓝色表示负相关，红色表示正相关。相关性表格中展示Top 500 的差异代谢物（按p value从小到大排序）和Top 500 的差异基因（按p value 从小到大排序）的两两相关性。</p>
+<p class="premark">对应的结果目录：相关性表格见Result/2.corr/*.vs.*/*.vs.*_corr.xls，热图见Result/2.corr/*.vs.*/*.vs.*_corrplot_heatmap.{pdf,png}</p>
+
+
+
+
+<a name="相关性网络图分析"></a >
+<h4 id="">2.2 相关性网络图分析</h4>
+
+<p class="paragraph">通过网络图可直观的表示代谢物和基因之间的关系，选取经过筛选的top10差异基因和top5差异代谢物进行作图。 图中代谢物用黄色标出，基因用蓝色标出，它们之间的相关性用直线表示。结果如下图：</p>
+
+
+<p class="center">
+        <div class="albumSlider">
+          <div class="fullview"><img src="src/pictures/L.vs.H_pos_LvsH_meta_tran_corr_net.png" alt="KEGG图"/></div>
+          <div class="slider">
+          <div class="button movebackward" title="向上滚动"></div>
+          <div class="imglistwrap">
+          <ul class="imglist">
+          
+          <li><a id="example1" href="src/pictures/L.vs.H_pos_LvsH_meta_tran_corr_net.png" ><img src="src/pictures/L.vs.H_pos_LvsH_meta_tran_corr_net.png" alt="KEGG图"/></a></li>
+          
+          </div>
+      <div class="button moveforward" title="向下滚动"></div>
+      </div>
+  </div>
+</p>
+<p class="center">
+  <div class="albumSlider">
+    <div class="fullview"><img src="src/pictures/L.vs.H_neg_LvsH_meta_tran_corr_net.png" alt="KEGG图"/></div>
+    <div class="slider">
+    <div class="button movebackward" title="向上滚动"></div>
+    <div class="imglistwrap">
+    <ul class="imglist">
+    
+    <li><a id="example1" href="src/pictures/L.vs.H_neg_LvsH_meta_tran_corr_net.png" ><img src="src/pictures/L.vs.H_neg_LvsH_meta_tran_corr_net.png" alt="KEGG图"/></a></li>
+    
+    </div>
+<div class="button moveforward" title="向下滚动"></div>
+</div>
+</div>
+</p>
+<p class="name">图2.2 相关性网络图（上图框是正离子模式，下图框是负离子模式）</p>
+<p class="premark">注：图中方框表示代谢物和基因，框的颜色区分代谢物和基因，黄色框代表代谢物，蓝色框代表基因；线的颜色表示相关性，正相关的是红色，负相关的是蓝色，相关性系数越大，颜色越深。</p>
+<p class="premark">对应的结果目录：网络图见Result/2.corr/*.vs.*/*.vs.*_meta_tran_corr_net.{pdf,png}</p>
+
+</div>
+<div id="page">
+
+<p class="head"><a href="#home" title = "返回首页"><img class="logo" align="left" src="src/images/logo.png" /></a> <a name="差异基因与差异代谢物通路富集分析">北京诺禾致源生物信息科技有限公司</a><hr/></p>
+<h3 id="">3.差异基因与差异代谢物通路富集分析</h3>
+<a name="KEGG富集分析"></a >
+<h4 id="">3.1 KEGG富集分析</h4>
+<p class="paragraph">将得到的所有差异基因与差异代谢物分别向KEGG pathway数据库映射，获得它们的共同的pathway信息，确定差异代谢物和差异基因共同参与的主要生化途径和信号转导途径，部分结果如下所示（详细结果及高清版图片，可见结果文件）。</p>
+<p class="name">表3.1　差异基因和差异代谢物KEGG pathway分析</p>
+<div class="huadong"><table border="1" class="dataframe table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Description</th>
+      <th>Pvalue</th>
+      <th>Ratio</th>
+      <th>Count</th>
+      <th>Type</th>
+      <th>ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Sphingolipid metabolism</td>
+      <td>0.230769</td>
+      <td>1.000000</td>
+      <td>1</td>
+      <td>Meta</td>
+      <td>sphinganine</td>
+    </tr>
+    <tr>
+      <td>Sphingolipid metabolism</td>
+      <td>0.328199</td>
+      <td>0.093750</td>
+      <td>6</td>
+      <td>Tran</td>
+      <td>Anser_cygnoides_newGene_4350;evm.model.chr16.628.g;evm.model.chr19.678.g;evm.model.chr23.277.g;evm.model.chr27.570.g;evm.model.chr7.577.g</td>
+    </tr>
+    <tr>
+      <td>Retinol metabolism</td>
+      <td>0.230769</td>
+      <td>1.000000</td>
+      <td>1</td>
+      <td>Meta</td>
+      <td>Vitamin A</td>
+    </tr>
+    <tr>
+      <td>Retinol metabolism</td>
+      <td>0.974478</td>
+      <td>0.020833</td>
+      <td>1</td>
+      <td>Tran</td>
+      <td>evm.model.chr25.269.g</td>
+    </tr>
+    <tr>
+      <td>Ferroptosis</td>
+      <td>0.423077</td>
+      <td>0.500000</td>
+      <td>1</td>
+      <td>Meta</td>
+      <td>Ubiquinone-10</td>
+    </tr>
+  </tbody>
+</table></div>
+	<p class="tremark">注：</br>
+1) Description：差异代谢物/基因在KEGG pathway数据库中的通路名称</br>
+2) Pvalue：通路富集【转录或代谢】的pvalue</br>
+3) Ratio：该通路中富集到的差异代谢物或差异基因与该通路中注释到的代谢物或基因个数的比值</br>
+4) Count：通路中富集的代谢物或基因的个数</br>
+5) Type：数据类型，来源于代谢组或转录组</br>
+6) ID：通路中富集的代谢物或基因的ID</br>
+
+<p class="center">
+          <div class="albumSlider">
+            <div class="fullview"><img src="src/pictures/L.vs.H_pos_LvsH_bar.png" alt="KEGG柱状图"/></div>
+            <div class="slider">
+            <div class="button movebackward" title="向上滚动"></div>
+            <div class="imglistwrap">
+            <ul class="imglist">
+            
+            <li><a id="example1" href="src/pictures/L.vs.H_pos_LvsH_bar.png" ><img src="src/pictures/L.vs.H_pos_LvsH_bar.png" alt="KEGG柱状图"/></a></li>
+            
+            </div>
+        <div class="button moveforward" title="向下滚动"></div>
+        </div>
+    </div>
+  </p>
+  <p class="center">
+    <div class="albumSlider">
+      <div class="fullview"><img src="src/pictures/L.vs.H_neg_LvsH_bar.png" alt="KEGG柱状图"/></div>
+      <div class="slider">
+      <div class="button movebackward" title="向上滚动"></div>
+      <div class="imglistwrap">
+      <ul class="imglist">
+          
+          <li><a id="example1" href="src/pictures/L.vs.H_neg_LvsH_bar.png" ><img src="src/pictures/L.vs.H_neg_LvsH_bar.png" alt="KEGG柱状图"/></a></li>
+          
+                          </ul>
+      </div>
+  <div class="button moveforward" title="向下滚动"></div>
+  </div>
+</div>
+</p>
+        <p class="name">图3.1 差异基因与差异代谢小分子 KEGG 通路分布统计图（上图框是正离子模式，下图框是负离子模式）</p>
+
+
+<p class="center">
+          <div class="albumSlider">
+            <div class="fullview"><img src="src/pictures/L.vs.H_pos_LvsH_kegg_enrichment_share.scatterplot.dv.png" alt="KEGG图"/></div>
+            <div class="slider">
+            <div class="button movebackward" title="向上滚动"></div>
+            <div class="imglistwrap">
+            <ul class="imglist">
+            
+            <li><a id="example1" href="src/pictures/L.vs.H_pos_LvsH_kegg_enrichment_share.scatterplot.dv.png" ><img src="src/pictures/L.vs.H_pos_LvsH_kegg_enrichment_share.scatterplot.dv.png" alt="KEGG图"/></a></li>
+            
+            </div>
+        <div class="button moveforward" title="向下滚动"></div>
+        </div>
+    </div>
+  </p>
+<p class="center">
+          <div class="albumSlider">
+            <div class="fullview"><img src="src/pictures/L.vs.H_neg_LvsH_kegg_enrichment_share.scatterplot.dv.png" alt="KEGG图"/></div>
+            <div class="slider">
+            <div class="button movebackward" title="向上滚动"></div>
+            <div class="imglistwrap">
+            <ul class="imglist">
+            
+            <li><a id="example1" href="src/pictures/L.vs.H_neg_LvsH_kegg_enrichment_share.scatterplot.dv.png" ><img src="src/pictures/L.vs.H_neg_LvsH_kegg_enrichment_share.scatterplot.dv.png" alt="KEGG图"/></a></li>
+            
+            </div>
+        <div class="button moveforward" title="向下滚动"></div>
+        </div>
+    </div>
+  </p>
+  	<p class="name">图3.2 差异基因与差异代谢物KEGG富集气泡图（上图框是正离子模式，下图框是负离子模式）</p>
+
+<p class="premark">注：横坐标为该通路中富集到的差异代谢物或差异基因与该通路中注释到的代谢物或基因个数的比值（Ratio），纵坐标为代谢组-转录组共同富集到的KEGG通路。Count：通路中富集的代谢物或基因的个数。颜色表示P值，颜色越亮P值越小，通路富集越显著。</p>
+<p class="premark">对应的结果目录：kegg气泡图见Result/3.kegg/3.1.share_pathway/*.vs.*/*.vs.*_kegg_enrichment_share.scatterplot.dv.{pdf,png}</p>
+
+<a name="iPath 通路可视化分析"></a >
+<h4 id="">3.2 iPath 通路可视化分析</h4>
+
+<p class="paragraph">iPath（interactive Pathways Explorer）[https://pathways.embl.de/]是一款可视化的通路图在线分析工具。它总结了生物系统中的各种代谢通路，节点表示各种生化分子，线表示生化反应。 将差异代谢物与差异基因共有的富集通路，同时向 iPath 网站映射。如图3.3。 </p>
+
+<p class="center">
+          <div class="albumSlider">
+            <div class="fullview"><img src="src/pictures/L.vs.H_pos_LvsH.png" alt="KEGG图"/></div>
+            <div class="slider">
+            <div class="button movebackward" title="向上滚动"></div>
+            <div class="imglistwrap">
+            <ul class="imglist">
+            
+            <li><a id="example1" href="src/pictures/L.vs.H_pos_LvsH.png" ><img src="src/pictures/L.vs.H_pos_LvsH.png" alt="KEGG图"/></a></li>
+            
+            </div>
+        <div class="button moveforward" title="向下滚动"></div>
+        </div>
+    </div>
+  </p>
+<p class="center">
+          <div class="albumSlider">
+            <div class="fullview"><img src="src/pictures/L.vs.H_neg_LvsH.png" alt="KEGG图"/></div>
+            <div class="slider">
+            <div class="button movebackward" title="向上滚动"></div>
+            <div class="imglistwrap">
+            <ul class="imglist">
+            
+            <li><a id="example1" href="src/pictures/L.vs.H_neg_LvsH.png" ><img src="src/pictures/L.vs.H_neg_LvsH.png" alt="KEGG图"/></a></li>
+            
+            </div>
+        <div class="button moveforward" title="向下滚动"></div>
+        </div>
+    </div>
+  </p>
+  	<p class="name">图3.3 共有富集通路的 iPath 通路图（上图框是正离子模式，下图框是负离子模式）</p>
+
+<p class="premark">注：通路中蓝色线条表示共有的富集通路。</p>
+<p class="premark">对应的结果目录：kegg的iPath见Result/3.kegg/3.2.ipath/*.vs.*/*.vs.*.{pdf,png}</p>
+
+
+<a name="KEGG 通量可视化分析"></a >
+<h4 id="">3.3 KEGG pathview可视化分析</h3>
+<p class="paragraph">根据上述富集结果，对代谢组学和转录组学共同富集的代谢通路展示通路图。在KEGG通路图中，圆圈代表代谢物，蓝色圆圈为下调差异代谢物，黄色圆圈为上调差异代谢物；方框代表基因或蛋白质，其中绿色方框代表表达量差异下调的基因，红色方框代表表达量差异上调的基因。结果如下图：</p>
+
+
+<p class="center">
+          <div class="albumSlider">
+            <div class="fullview"><img src="src/pictures/L.vs.H_pathview_pos_LvsH.png" alt="KEGG图"/></div>
+            <div class="slider">
+            <div class="button movebackward" title="向上滚动"></div>
+            <div class="imglistwrap">
+            <ul class="imglist">
+            
+            <li><a id="example1" href="src/pictures/L.vs.H_pathview_pos_LvsH.png" ><img src="src/pictures/L.vs.H_pathview_pos_LvsH.png" alt="KEGG图"/></a></li>
+            
+            </div>
+        <div class="button moveforward" title="向下滚动"></div>
+        </div>
+    </div>
+  </p>
+<p class="center">
+          <div class="albumSlider">
+            <div class="fullview"><img src="src/pictures/L.vs.H_pathview_neg_LvsH.png" alt="KEGG图"/></div>
+            <div class="slider">
+            <div class="button movebackward" title="向上滚动"></div>
+            <div class="imglistwrap">
+            <ul class="imglist">
+            
+            <li><a id="example1" href="src/pictures/L.vs.H_pathview_neg_LvsH.png" ><img src="src/pictures/L.vs.H_pathview_neg_LvsH.png" alt="KEGG图"/></a></li>
+            
+            </div>
+        <div class="button moveforward" title="向下滚动"></div>
+        </div>
+    </div>
+  </p>
+  	<p class="name">图3.4 pathview富集通路图（上图框是正离子模式，下图框是负离子模式）</p>
+
+<p class="premark">注：代谢物和基因的KEGG富集通路图，以代谢物和基因的log2(FC)作为标记，第一个图例绿到红代表基因的FC，第二个图例蓝到黄代表代谢物的FC。</p>
+<p class="premark">对应的结果目录：kegg的pathview见Result/3.kegg/3.3.pathview/*.vs.*/ko*.*.vs.*.{pdf,png}</p>
+
+
+</div>
+<div id="page">
+
+
+<p class="head"><a href="#home" title = "返回首页"><img class="logo" align="left" src="src/images/logo.png" /></a> <a name="参考文献">北京诺禾致源生物信息科技有限公司</a><hr/></p>
+  <h2 id="reference_html">四、参考文献</h2>
+  [1] Dunn, W.B. et al. Procedures for large-scale metabolic profiling of serum and plasma using gas chromatography and liquid chromatography coupled to mass spectrometry. Nature protocols. 6,1060-1083 (2011).<br />
+  [2] Griffiths, W. J. & Wang, Y. Mass spectrometry: fromproteomics to metabolomics and lipidomics. Chemical Society Reviews. 38, 1882–1896 (2009).<br />
+  [3] Ivica Letunic, A. et al. iPath: interactive exploration of biochemical pathways and networks. Trends in biochemical sciences.33(3):101-3 (2008).<br />
+<br />
+</div>
+<div id="page">
+<!----------------------------------------------- End -------------------------------------------->
+</div>
+</body>
+</html>
